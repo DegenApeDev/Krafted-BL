@@ -3,7 +3,7 @@
 
 
 <a name="ENG"></a>
-Krafted-UI is server software for Minecraft: PocketEdition.<br>
+Krafted-BL is server software for Minecraft: PocketEdition.<br>
 This software is based on **[PocketMine-MP](https://github.com/PocketMine/PocketMine-MP)**.<br>
 Most of the original code was written by **PocketMine Team**.<br>
 Part of the code was written by **iTXTech**<br>

@@ -34,41 +34,6 @@ use pocketmine\command\SimpleCommandMap;
 use pocketmine\entity\Arrow;
 use pocketmine\entity\ThrownExpBottle;
 use pocketmine\entity\ThrownPotion;
-use pocketmine\entity\Bat;
-use pocketmine\entity\Blaze;
-use pocketmine\entity\Boat;
-use pocketmine\entity\CaveSpider;
-use pocketmine\entity\Chicken;
-use pocketmine\entity\Cow;
-use pocketmine\entity\Creeper;
-use pocketmine\entity\Enderman;
-use pocketmine\entity\ElderGuardian;
-use pocketmine\entity\Ghast;
-use pocketmine\entity\Guardian;
-use pocketmine\entity\Husk;
-use pocketmine\entity\Horse;
-use pocketmine\entity\IronGolem;
-use pocketmine\entity\LavaSlime;
-use pocketmine\entity\Ocelot;
-use pocketmine\entity\Pig;
-use pocketmine\entity\PigZombie;
-use pocketmine\entity\Rabbit;
-use pocketmine\entity\Sheep;
-use pocketmine\entity\Spider;
-use pocketmine\entity\Silverfish;
-use pocketmine\entity\Skeleton;
-use pocketmine\entity\Slime;
-use pocketmine\entity\SnowGolem;
-use pocketmine\entity\Wither;
-use pocketmine\entity\Wolf;
-use pocketmine\entity\Witch;
-use pocketmine\entity\Mule;
-use pocketmine\entity\Donkey;
-use pocketmine\entity\SkeletonHorse;
-use pocketmine\entity\ZombieHorse;
-use pocketmine\entity\Stray;
-use pocketmine\entity\WitherSkeleton;
-use pocketmine\entity\Mooshroom;
 use pocketmine\entity\Minecart;
 use pocketmine\entity\FishingHook;
 use pocketmine\entity\Attribute;
@@ -79,15 +44,10 @@ use pocketmine\entity\Human;
 use pocketmine\entity\Item as DroppedItem;
 use pocketmine\entity\PrimedTNT;
 use pocketmine\entity\Snowball;
-use pocketmine\entity\Squid;
 use pocketmine\entity\Villager;
 use pocketmine\entity\XPOrb;
-use pocketmine\entity\Zombie;
 use pocketmine\entity\Lightning;
 use pocketmine\entity\EnderPearl;
-use pocketmine\entity\EnderDragon;
-use pocketmine\entity\Endermite;
-use pocketmine\entity\PolarBear;
 use pocketmine\event\HandlerList;
 use pocketmine\event\level\LevelInitEvent;
 use pocketmine\event\level\LevelLoadEvent;
@@ -310,9 +270,6 @@ class Server{
 	/** @var Level */
 	private $levelDefault = null;
 
-	public $weatherEnabled = false;
- 	public $weatherRandomDurationMin = 6000;
- 	public $weatherRandomDurationMax = 12000;
 	public $lightningTime = 200;
 	public $lightningFire = false;
 	public $foodEnabled = false;
@@ -1462,7 +1419,6 @@ class Server{
 				"CrashDump" => true,
 				"foodEnabled" => true,
 				"expEnabled" => true,
-				"weatherEnabled" => false,
 				"allowSplashPotion" => true,
 				"DestroyBlockParticle" => true,
 				"keepInventory" => false,
@@ -1509,7 +1465,6 @@ class Server{
 			$this->foodEnabled = $this->getProperty("foodEnabled", true);
 			$this->allowSplashPotion = $this->getProperty("allowSplashPotion", true);
 			$this->expEnabled = $this->getProperty("expEnabled", true);
-			$this->weatherEnabled = $this->getProperty("weatherEnabled", true);
 			$this->destroyblockparticle = $this->getProperty("DestroyBlockParticle", true);
 			$this->titletick = $this->getProperty("TitleTick", true);
 			$this->stevekick = $this->getProperty("SteveKick", true);
@@ -2538,54 +2493,10 @@ class Server{
 		Entity::registerEntity(PrimedTNT::class);
 		Entity::registerEntity(FishingHook::class);
 		Entity::registerEntity(Snowball::class);
-		Entity::registerEntity(Villager::class);
-		Entity::registerEntity(Zombie::class);
-		Entity::registerEntity(Squid::class);
-		Entity::registerEntity(Horse::class);
-		Entity::registerEntity(Human::class, true);
-		Entity::registerEntity(Bat::class);
-		Entity::registerEntity(Blaze::class);
-		Entity::registerEntity(Boat::class);
-		Entity::registerEntity(CaveSpider::class);
-		Entity::registerEntity(Chicken::class);
-		Entity::registerEntity(Cow::class);
-		Entity::registerEntity(Creeper::class);
-		Entity::registerEntity(EnderPearl::class);
-		Entity::registerEntity(Enderman::class);
-		Entity::registerEntity(ElderGuardian::class);
-		Entity::registerEntity(Ghast::class);
-		Entity::registerEntity(Guardian::class);
-		Entity::registerEntity(Husk::class);
-		Entity::registerEntity(IronGolem::class);
-		Entity::registerEntity(LavaSlime::class);
-		Entity::registerEntity(Ocelot::class);
-		Entity::registerEntity(Pig::class);
-		Entity::registerEntity(PigZombie::class);
-		Entity::registerEntity(Rabbit::class);
-		Entity::registerEntity(Sheep::class);
-		Entity::registerEntity(Spider::class);
-		Entity::registerEntity(Silverfish::class);
-		Entity::registerEntity(Skeleton::class);
-		Entity::registerEntity(Slime::class);
-		Entity::registerEntity(SnowGolem::class);
-		Entity::registerEntity(Wither::class);
-		Entity::registerEntity(Wolf::class);
-		Entity::registerEntity(Witch::class);
-		Entity::registerEntity(Mule::class);
-		Entity::registerEntity(Donkey::class);
-		Entity::registerEntity(SkeletonHorse::class);
-		Entity::registerEntity(ZombieHorse::class);
-		Entity::registerEntity(Stray::class);
-		Entity::registerEntity(WitherSkeleton::class);
 		Entity::registerEntity(Minecart::class);
-		Entity::registerEntity(Mooshroom::class);
 		Entity::registerEntity(ThrownPotion::class);
 		Entity::registerEntity(ThrownExpBottle::class);
 		Entity::registerEntity(XPOrb::class);
-		Entity::registerEntity(Lightning::class);
-		Entity::registerEntity(EnderDragon::class);
-		Entity::registerEntity(Endermite::class);
-		Entity::registerEntity(PolarBear::class);
 	}
 
 	private function registerTiles(){

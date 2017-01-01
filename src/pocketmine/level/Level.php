@@ -109,9 +109,6 @@ use pocketmine\tile\Tile;
 use pocketmine\utils\LevelException;
 use pocketmine\utils\Random;
 use pocketmine\utils\ReversePriorityQueue;
-use pocketmine\level\weather\Weather;
-use pocketmine\level\weather\WeatherManager;
-use pocketmine\entity\Lightning;
 use pocketmine\entity\XPOrb;
 
 #include <rules/Level.h>
@@ -138,9 +135,6 @@ class Level implements ChunkManager, Metadatable{
 	const TIME_SUNRISE = 23000;
 
 	const TIME_FULL = 24000;
-
-	/** @var Weather */
-	private $weather;
 
 	/** @var Tile[] */
 	private $tiles = [];
@@ -363,35 +357,6 @@ class Level implements ChunkManager, Metadatable{
 		$this->temporalPosition = new Position(0, 0, 0, $this);
 		$this->temporalVector = new Vector3(0, 0, 0);
 		$this->tickRate = 1;
-		$this->weather = new Weather($this, 0);
-		WeatherManager::registerLevel($this);
-		$this->weather->setCanCalculate(true);
-	}
-
-	public function spawnLightning(Vector3 $pos) : Lightning{
-		$nbt = new CompoundTag("", [
-			"Pos" => new ListTag("Pos", [
-				new DoubleTag("", $pos->getX()),
-				new DoubleTag("", $pos->getY()),
-				new DoubleTag("", $pos->getZ())
-			]),
-			"Motion" => new ListTag("Motion", [
-				new DoubleTag("", 0),
-				new DoubleTag("", 0),
-				new DoubleTag("", 0)
-			]),
-			"Rotation" => new ListTag("Rotation", [
-				new FloatTag("", 0),
-				new FloatTag("", 0)
-			]),
-		]);
-
-		$chunk = $this->getChunk($pos->x >> 4, $pos->z >> 4, false);
-
-		$lightning = new Lightning($chunk, $nbt);
-		$lightning->spawnToAll();
-
-		return $lightning;
 	}
 
 	public function spawnXPOrb(Vector3 $pos, int $exp = 1){
@@ -422,13 +387,6 @@ class Level implements ChunkManager, Metadatable{
 			return $expOrb;
 		}
 		return false;
-	}
-
-	/**
-	 * @return Weather
-	 */
-	public function getWeather(){
-		return $this->weather;
 	}
 
 	public function getTickRate() : int{
@@ -594,8 +552,6 @@ class Level implements ChunkManager, Metadatable{
 			$this->server->setDefaultLevel(null);
 		}
 
-		if($this->weather != null) WeatherManager::unregisterLevel($this);
-
 		$this->close();
 
 		return true;
@@ -715,8 +671,6 @@ class Level implements ChunkManager, Metadatable{
 		$this->timings->doTick->startTiming();
 
 		$this->checkTime();
-
-		$this->weather->calcWeather($currentTick);
 
 		$this->unloadChunks();
 

@@ -109,8 +109,6 @@ use pocketmine\tile\Tile;
 use pocketmine\utils\LevelException;
 use pocketmine\utils\Random;
 use pocketmine\utils\ReversePriorityQueue;
-use pocketmine\level\weather\Weather;
-use pocketmine\level\weather\WeatherManager;
 use pocketmine\entity\Lightning;
 use pocketmine\entity\XPOrb;
 
@@ -140,7 +138,7 @@ class Level implements ChunkManager, Metadatable{
 	const TIME_FULL = 24000;
 
 	/** @var Weather */
-	private $weather;
+	//private $weather;
 
 	/** @var Tile[] */
 	private $tiles = [];
@@ -363,9 +361,9 @@ class Level implements ChunkManager, Metadatable{
 		$this->temporalPosition = new Position(0, 0, 0, $this);
 		$this->temporalVector = new Vector3(0, 0, 0);
 		$this->tickRate = 1;
-		$this->weather = new Weather($this, 0);
-		WeatherManager::registerLevel($this);
-		$this->weather->setCanCalculate(true);
+		//$this->weather = new Weather($this, 0);
+		//WeatherManager::registerLevel($this);
+		//$this->weather->setCanCalculate(true);
 	}
 
 	public function spawnLightning(Vector3 $pos) : Lightning{
@@ -427,9 +425,9 @@ class Level implements ChunkManager, Metadatable{
 	/**
 	 * @return Weather
 	 */
-	public function getWeather(){
+	/*public function getWeather(){
 		return $this->weather;
-	}
+	}*/
 
 	public function getTickRate() : int{
 		return $this->tickRate;
@@ -594,7 +592,7 @@ class Level implements ChunkManager, Metadatable{
 			$this->server->setDefaultLevel(null);
 		}
 
-		if($this->weather != null) WeatherManager::unregisterLevel($this);
+		//if($this->weather != null) WeatherManager::unregisterLevel($this);
 
 		$this->close();
 
@@ -716,7 +714,7 @@ class Level implements ChunkManager, Metadatable{
 
 		$this->checkTime();
 
-		$this->weather->calcWeather($currentTick);
+		//$this->weather->calcWeather($currentTick);
 
 		$this->unloadChunks();
 

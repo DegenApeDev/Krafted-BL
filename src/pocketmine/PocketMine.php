@@ -76,8 +76,8 @@ namespace pocketmine {
 	const VERSION = "1.9dev";
 	const API_VERSION = "2.0.0";
 	const CODENAME = "BL-Kidz";
-	const MINECRAFT_VERSION = "v1.0.0 alpha";
-	const MINECRAFT_VERSION_NETWORK = "1.0.0";
+	const MINECRAFT_VERSION = "v1.0.3 alpha";
+	const MINECRAFT_VERSION_NETWORK = "1.0.3";
 	const BLUELIGHT_VERSION = "2.0.0";
 
 	/*

@@ -1,4 +1,4 @@
-﻿#Krafted-BL Based Off BlueLight for 1.0.0
+﻿#Krafted-BL Based Off BlueLight for 1.0.3
 ## Select Language: [English](#ENG) [日本語](#JPN)
 
 

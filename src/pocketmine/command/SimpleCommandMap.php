@@ -119,6 +119,7 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new TeleportCommand("tp"));
 		$this->register("pocketmine", new TimeCommand("time"));
 		$this->register("pocketmine", new TimingsCommand("timings"));
+        $this->register("pocketmine", new TransferCommand("transfer"));
 		$this->register("pocketmine", new ReloadCommand("reload"));
 		$this->register("pocketmine", new XpCommand("xp"));
 		$this->register("pocketmine", new WeatherCommand("weather"));

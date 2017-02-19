@@ -31,7 +31,9 @@ class ResourcePackInfoEntry{
 		$this->version = $version;
 		$this->packSize = $packSize;
 	}
-
+    public function getPackData(){
+ 		//return $this->packSize;
+	}
 	public function getPackId() : string{
 		return $this->packId;
 	}

@@ -3435,8 +3435,8 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$this->PlayerFall($packet->fallDistance);
 				break;
 			case ProtocolInfo::RIDER_JUMP_PACKET:
-+				echo $packet->power."\n";
-+				break;
+				echo $packet->power."\n";
+				break;
                 case ProtocolInfo::RESOURCE_PACK_CLIENT_RESPONSE_PACKET:
 				switch($packet->type){
 					case 2:

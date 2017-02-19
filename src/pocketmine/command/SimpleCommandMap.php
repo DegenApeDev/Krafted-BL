@@ -20,7 +20,8 @@
 */
 
 namespace pocketmine\command;
-
+use pocketmine\command\defaults\BanCidByNameCommand;
+use pocketmine\command\defaults\BanCidCommand;
 use pocketmine\command\defaults\BanCommand;
 use pocketmine\command\defaults\BanIpCommand;
 use pocketmine\command\defaults\BanListCommand;
@@ -37,8 +38,8 @@ use pocketmine\command\defaults\HelpCommand;
 use pocketmine\command\defaults\KickCommand;
 use pocketmine\command\defaults\KillCommand;
 use pocketmine\command\defaults\ListCommand;
-use pocketmine\command\defaults\MeCommand;
 use pocketmine\command\defaults\OpCommand;
+use pocketmine\command\defaults\PardonCidCommand;
 use pocketmine\command\defaults\PardonCommand;
 use pocketmine\command\defaults\PardonIpCommand;
 use pocketmine\command\defaults\ParticleCommand;

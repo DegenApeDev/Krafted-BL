@@ -3031,7 +3031,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$this->craftingType = 0;
 				Timings::$playerCommandTimer->startTiming();
 				$commandText = $packet->command;
-				i$command = $this->getServer()->getCommandMap()->getCommand($commandText);
+				$command = $this->getServer()->getCommandMap()->getCommand($commandText);
 				if($command !== null){
 					if($packet->args !== null && count($packet->args) > 0){
 						$pars = $command->getCommandParameter($packet->overload);

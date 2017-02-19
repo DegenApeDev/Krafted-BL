@@ -40,7 +40,9 @@ class LoginPacket extends DataPacket{
 	public $skinId;
 	public $skin = null;
 	public $isXbox = false;
-
+    public $deviceModel;
+	public $os;
+    
 	const MOJANG_PUBKEY = "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE8ELkixyLcwlZryUQcu1TvPOmI2B7vX83ndnWRUaXm74wFfa5f/lwQNTfrLVHa2PmenpGI6JhIMUJaWZrjmMj90NoKNFSNBuKdm8rYiXsfaz3K36x/1U26HpG0ZxK/V1V";
 
 	public function getName(){
@@ -90,6 +92,13 @@ class LoginPacket extends DataPacket{
 		if(isset($skinToken["SkinId"])){
 			$this->skinId = $skinToken["SkinId"];
 		}
+        if(isset($this->clientData["DeviceModel"])){
+			$this->deviceModel = $this->clientData["DeviceModel"];
+		}
+		if(isset($this->clientData["DeviceOS"])){
+			$this->os = $this->clientData["DeviceOS"];
+		}
+
 	}
 
 	public function encode(){

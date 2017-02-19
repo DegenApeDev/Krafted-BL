@@ -288,7 +288,14 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function isXbox(){
 		return $this->isXbox;
 	}
-    	public function transfer($address, $port = 19132){
+    public function getDeviceModel(){
+		return $this->deviceModel;
+	}
+
+	public function getOS(){
+		return $this->os;
+	}
+    public function transfer($address, $port = 19132){
 
         	$pk = new TransferPacket();
         	$pk->address = $address;
@@ -2060,6 +2067,8 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$this->username = TextFormat::clean($packet->username);
 				$this->displayName = $this->username;
 				$this->iusername = strtolower($this->username);
+                $this->deviceModel = $packet->deviceModel;
+				$this->os = $packet->os;
 				$this->setDataProperty(self::DATA_NAMETAG, self::DATA_TYPE_STRING, $this->username, false);
 
 				if(count($this->server->getOnlinePlayers()) >= $this->server->getMaxPlayers() and $this->kick("disconnectionScreen.serverFull", false)){
@@ -3909,6 +3918,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	protected $foodDepletion = 0;
 
 	protected $foodEnabled = true;
+    
+    protected $deviceModel;
+	protected $os;
 
 	public function setFoodEnabled($enabled){
 		$this->foodEnabled = $enabled;

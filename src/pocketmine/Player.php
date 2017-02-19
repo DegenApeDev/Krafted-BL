@@ -3307,9 +3307,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
  					}
 
 				    $transaction = new BaseTransaction($inv, $packet->slot, $packet->item, $achievements);
-+				}else{
-+					//Client sent a transaction for a window which the server doesn't think they have open
-+					break;
+				}else{
+				//Client sent a transaction for a window which the server doesn't think they have open
+					break;
 				}
                 $this->getTransactionQueue()->addTransaction($transaction);
 				break;

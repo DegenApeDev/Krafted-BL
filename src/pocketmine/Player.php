@@ -2179,8 +2179,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					if($entity instanceof Boat){
 						$entity->goStraight($packet->x,$packet->y,$packet->z);
 					}else{
-					$entity->yaw = $this->yaw;
-					$entity->pitch = $this->pitch;
+					$entity->setRotation($this->yaw,$this->pitch);
 					}
 				}
 
@@ -3001,7 +3000,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				}
 				break;
 			case ProtocolInfo::DROP_ITEM_PACKET:
-				if($this->spawned === false or $this->blocked === true or !$this->isAlive()){
+				if($this->spawned === false or !$this->isAlive()){
 					break;
 				}
 
@@ -3436,10 +3435,8 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$this->PlayerFall($packet->fallDistance);
 				break;
 			case ProtocolInfo::RIDER_JUMP_PACKET:
-				if($this->linkedentity instanceof Horse){
-					$this->linkedentity->jump($packet->power);
-				}
-				break;
++				echo $packet->power."\n";
++				break;
                 case ProtocolInfo::RESOURCE_PACK_CLIENT_RESPONSE_PACKET:
 				switch($packet->type){
 					case 2:

@@ -3403,7 +3403,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					case 3:
 						//sendPackStack($this);
 						break;
-					case 4
+                    case 4:
 						//
 						break;
 				}
